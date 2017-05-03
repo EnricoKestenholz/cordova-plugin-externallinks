@@ -16,7 +16,7 @@
                 <param name="android-package" value="externallinksb" />
             </feature>
         </config-file>
-        <source-file src="src/android/externallinks.java" target-dir="src/com/externallinks/plugin"  />
+        <source-file src="src/android/com/externallinks/plugin/externallinks.java" target-dir="src/com/externallinks/plugin"  />
     </platform>
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
