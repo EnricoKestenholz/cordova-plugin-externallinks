@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-externallinks" version="0.2.3">
+    <name>Device</name>
+    <description>Cordova Plugin Exxternalinks</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,device, external, links, iframe</keywords>
+    <repo>https://github.com/EnricoKestenholz/cordova-plugin-externallinks</repo>
+    <issue>https://github.com/EnricoKestenholz/cordova-plugin-externallinks/issues</issue>
+    <js-module src="www/externallinks.js" name="externallinks">
+        <clobbers target="externallinks" />
+    </js-module>
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="externallinks">
+                <param name="android-package" value="externallinksb" />
+            </feature>
+        </config-file>
+        <source-file src="src/android/externallinks.java" target-dir="src/com/externallinks/plugin"  />
+    </platform>
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="externallinks">
+                <param name="ios-package" value="externallinks"/>
+            </feature>
+        </config-file>
+        <header-file src="src/ios/externallinks.h" />
+        <source-file src="src/ios/externallinks.m" />
+    </platform>
+</plugin>
