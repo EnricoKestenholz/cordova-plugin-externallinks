@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-externallinks" version="0.2.4">
+        id="cordova-plugin-externallinks" version="0.0.1">
     <name>Device</name>
     <description>Cordova Plugin Exxternalinks</description>
     <license>Apache 2.0</license>
