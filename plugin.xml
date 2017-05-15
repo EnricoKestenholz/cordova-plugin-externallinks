@@ -13,18 +13,9 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="externallinks">
-                <param name="android-package" value="externallinksb" />
+                <param name="android-package" value="externallinks" />
             </feature>
         </config-file>
         <source-file src="src/android/com/externallinks/plugin/externallinks.java" target-dir="src/com/externallinks/plugin"  />
-    </platform>
-    <platform name="ios">
-        <config-file target="config.xml" parent="/*">
-            <feature name="externallinks">
-                <param name="ios-package" value="externallinks"/>
-            </feature>
-        </config-file>
-        <header-file src="src/ios/externallinks.h" />
-        <source-file src="src/ios/externallinks.m" />
     </platform>
 </plugin>

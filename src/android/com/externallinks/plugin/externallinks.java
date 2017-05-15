@@ -9,7 +9,5 @@ import android.content.Context;
 import android.widget.Toast;
 
 public class externallinks extends CordovaPlugin {
-		@Override
-
 
 }
