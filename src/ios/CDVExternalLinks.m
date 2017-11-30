@@ -53,11 +53,9 @@
     CDVWhitelist* mainWhiteList = [[CDVWhitelist alloc] initWithArray:@[ @"file://" ]];
     BOOL allowMain = [mainWhiteList URLIsAllowed:mainUrl logFailure:NO];
 
-    NSlog(@"shouldOverrideLoadWithRequest CDVExternalLinks");
     if(!allowMain){
         // only allow-intent if it's a UIWebViewNavigationTypeLinkClicked (anchor tag) OR
         // it's a UIWebViewNavigationTypeOther, and it's an internal link
-
         if ([[self class] shouldOpenURLRequest:request navigationType:navigationType]){
 
             #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
@@ -80,6 +78,8 @@
         // consume the request (i.e. no error) if it wasn't handled above
         return NO;
     }
+
+    return YES;
 }
 
 - (BOOL)shouldOverrideLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
