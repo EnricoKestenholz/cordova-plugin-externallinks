@@ -10,12 +10,13 @@
     <js-module src="www/externallinks.js" name="externallinks">
         <clobbers target="externallinks" />
     </js-module>
-    <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="externallinks">
-                <param name="android-package" value="externallinks" />
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="ExternalLinks">
+                <param name="ios-package" value="CDVExternalLinks"/>
             </feature>
         </config-file>
-        <source-file src="src/android/com/externallinks/plugin/externallinks.java" target-dir="src/com/externallinks/plugin"  />
+        <header-file src="src/ios/CDVExternalLinks.h" />
+        <source-file src="src/ios/CDVExternalLinks.m" />
     </platform>
 </plugin>
