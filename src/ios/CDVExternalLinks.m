@@ -30,16 +30,54 @@
 #pragma mark NSXMLParserDelegate
 
 
++ (BOOL)shouldOpenURLRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
+
+{
+
+    return (UIWebViewNavigationTypeLinkClicked == navigationType ||
+
+        (UIWebViewNavigationTypeOther == navigationType &&
+         [[request.mainDocumentURL absoluteString] isEqualToString:[request.URL absoluteString]]
+        )
+
+    );
+
+}
+
 + (BOOL)shouldOverrideLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
 {
 
-   NSURL* mainUrl = [request mainDocumentURL];
+    NSURL* url = [request URL];
+    NSURL* mainUrl = [request mainDocumentURL];
 
     CDVWhitelist* mainWhiteList = [[CDVWhitelist alloc] initWithArray:@[ @"file://" ]];
     BOOL allowMain = [mainWhiteList URLIsAllowed:mainUrl logFailure:NO];
 
     if(!allowMain){
-       return NO
+        // only allow-intent if it's a UIWebViewNavigationTypeLinkClicked (anchor tag) OR
+        // it's a UIWebViewNavigationTypeOther, and it's an internal link
+
+        if ([[self class] shouldOpenURLRequest:request navigationType:navigationType]){
+
+            #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
+
+            // CB-11895; openURL with a single parameter is deprecated in iOS 10
+            // see https://useyourloaf.com/blog/openurl-deprecated-in-ios10
+
+            if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+                 [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            } else {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+            #else
+            // fall back if on older SDK
+
+           [[UIApplication sharedApplication] openURL:url];
+
+        #endif
+        }
+        // consume the request (i.e. no error) if it wasn't handled above
+        return NO;
     }
 }
 

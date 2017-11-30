@@ -1,5 +1,4 @@
-#import "CDVPlugin.h"
-#import "CDVWhitelist.h"
+#import <Cordova/CDVPlugin.h>
 
 @interface CDVExternalLinks : CDVPlugin <NSXMLParserDelegate>
 
