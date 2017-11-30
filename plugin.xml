@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"   id="cordova-plugin-externallinks" version="0.1.0">
-    <name>Device</name>
-    <description>Cordova Plugin Exxternalinks</description>
+    <name>Externalinks</name>
+    <description>Cordova Plugin Externalinks</description>
     <license>Apache 2.0</license>
     <keywords>cordova,device, external, links, iframe</keywords>
     <repo>https://github.com/EnricoKestenholz/cordova-plugin-externallinks</repo>
